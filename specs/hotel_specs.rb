@@ -29,6 +29,14 @@ class TestHotel < MiniTest::Test
 
   end
 
+  def test_new_guest
+    assert_equal("Tommy Amsterdam", @hotel.new_guest)
+  end
+
+  # def test_push_to_guests
+  #     assert_equal(5, @hotel.number_of_rooms_booked)
+  # end
+
   def test_number_of_rooms_is_6
     assert_equal(6, @hotel.number_of_rooms)
   end
@@ -40,6 +48,9 @@ class TestHotel < MiniTest::Test
   def test_num_rooms_available
     assert_equal(2, @hotel.number_of_rooms_available)
   end
+  def test_the_rooms_taken
+    assert_equal(["double", "single", "double", "single"], @hotel.the_rooms_taken)
+  end
 
   def test_rooms_occupancy_type
     assert_equal(['single','double','single','double','single','double'], @hotel.rooms_occupancy_type)
@@ -48,6 +59,7 @@ class TestHotel < MiniTest::Test
   def test_guest_roster
     assert_equal(["Steve and Anne Thompson", "Jim Brew", "Lady and Lord Smith", "Jenny Banjo"], @hotel.guest_roster)
   end
+
 
   def test_num_of_guest
     assert_equal(6, @hotel.total_individual_guests)
