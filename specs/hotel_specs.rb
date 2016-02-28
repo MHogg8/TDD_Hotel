@@ -37,9 +37,9 @@ class TestHotel < MiniTest::Test
     assert_equal("Tommy Amsterdam", @hotel.new_guest)
   end
 
-  # def test_push_to_guests
-  #     assert_equal(5, @hotel.number_of_rooms_booked)
-  # end
+  def test_push_to_guests
+    assert_equal(5, @hotel.push_to_guests)
+  end
 
   #####################################################
   #functions for the hotel rooms
@@ -86,8 +86,12 @@ class TestHotel < MiniTest::Test
   end
 
   def test_hotel_revenue
-    assert_equal(60, @hotel.hotel_revenue)
+    assert_equal([60], @hotel.hotel_revenue)
   end
+
+  # def test_total_revenue
+  #   assert_equal(150, @hotel.total_revenue)
+  # end
 
   #####################################################
   #functions for checking_out guests
@@ -98,7 +102,7 @@ class TestHotel < MiniTest::Test
   end
 
   def test_checkout
-    assert_equal(60, @hotel.hotel_revenue)
+    assert_equal([60], @hotel.hotel_revenue)
     assert_equal(["Jim Brew", "Lady and Lord Smith", "Jenny Banjo"], @hotel.remove_guest)
   end
 
