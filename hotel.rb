@@ -1,3 +1,5 @@
+require_relative('guest')
+require_relative('room')
 
 class Hotel
 
@@ -7,6 +9,7 @@ class Hotel
   def initialize(hotel_size, number_of_guests)
     @num_of_rooms = hotel_size
     @num_of_guests = number_of_guests
+    @total_revenue = []
     
   end
 ######################################################
@@ -14,13 +17,14 @@ class Hotel
 ######################################################
 
 def new_guest #creates a new guest
-  @guest_new = Guest.new("Tommy Amsterdam", 1, 3)
-  return @guest_new.name
+  new_arrival = Guest.new("Tommy Amsterdam", 1, 3)
+  return new_arrival.name
 end
 
-# def push_to_guests(new_guest)
-
-# end
+def push_to_guests
+  @num_of_guests << new_guest
+  return @num_of_guests.count
+end
 
 ######################################################
 #functions for the hotel rooms
@@ -54,7 +58,7 @@ def rooms_occupancy_type
   return rooms_at_hotel
 end # The function creates an array with the number of rooms. 
 
-def room_availability  #returns rooms available
+def room_availability  #returns type rooms available
   rooms_occupancy_type.sort & the_rooms_taken.sort
 end
 
@@ -86,10 +90,15 @@ def hotel_revenue   #cost of stay at hotel
   for guest in @num_of_guests
     if guest.name == "Steve and Anne Thompson"#needs to be gets.chomp
       money_earned += guest.stay_cost 
-  return money_earned
+      @total_revenue << money_earned
+    return @total_revenue
     end
   end
 end
+
+# def total_revenue
+#   return @total_revenue
+# end
 
 ######################################################
 #functions for checking_out guests
