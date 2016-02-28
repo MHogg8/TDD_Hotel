@@ -29,6 +29,10 @@ class TestHotel < MiniTest::Test
 
   end
 
+  #####################################################
+  #functions for cheking-in the guest 
+  #####################################################
+  
   def test_new_guest
     assert_equal("Tommy Amsterdam", @hotel.new_guest)
   end
@@ -36,6 +40,10 @@ class TestHotel < MiniTest::Test
   # def test_push_to_guests
   #     assert_equal(5, @hotel.number_of_rooms_booked)
   # end
+
+  #####################################################
+  #functions for the hotel rooms
+  #####################################################
 
   def test_number_of_rooms_is_6
     assert_equal(6, @hotel.number_of_rooms)
@@ -48,6 +56,7 @@ class TestHotel < MiniTest::Test
   def test_num_rooms_available
     assert_equal(2, @hotel.number_of_rooms_available)
   end
+
   def test_the_rooms_taken
     assert_equal(["double", "single", "double", "single"], @hotel.the_rooms_taken)
   end
@@ -56,11 +65,22 @@ class TestHotel < MiniTest::Test
     assert_equal(['single','double','single','double','single','double'], @hotel.rooms_occupancy_type)
   end
 
+  def test_room_availability
+    assert_equal(["double", "single"], @hotel.room_availability)
+  end
+
+  #####################################################
+  #functions for guest information
+  #####################################################
+
   def test_guest_roster
     assert_equal(["Steve and Anne Thompson", "Jim Brew", "Lady and Lord Smith", "Jenny Banjo"], @hotel.guest_roster)
   end
 
-
+  #####################################################
+  #functions for hotel reports
+  #####################################################
+  
   def test_num_of_guest
     assert_equal(6, @hotel.total_individual_guests)
   end
@@ -69,6 +89,10 @@ class TestHotel < MiniTest::Test
     assert_equal(60, @hotel.hotel_revenue)
   end
 
+  #####################################################
+  #functions for checking_out guests
+  #####################################################
+  
   def test_remove_guest
     assert_equal(["Jim Brew", "Lady and Lord Smith", "Jenny Banjo"], @hotel.remove_guest)
   end
